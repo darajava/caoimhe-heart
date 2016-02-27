@@ -1,26 +1,148 @@
 <html>
 <head>
+	<script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+
+<style>
+.green {
+  color:green;
+}
+
+.red {
+  color:red;
+}
+</style>
 <script type="text/javascript">
 var sounds = JSON.parse('{  "Mitral Regurgitation - Severe": {    "1" : "http://az816091.vo.msecnd.net/courses/5019.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/5019-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/101M.mp3"  },  "Tricuspid Regurgitation - Severe": {    "1" : "http://az816091.vo.msecnd.net/courses/5020.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/5020-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/102T.mp3"  },  "Mitral Stenosis Severe and Regurgitation Mild - Rheumatic Origin": {    "1" : "http://az816091.vo.msecnd.net/courses/103M.mp3"  },  "Aortic Stenosis Moderate and Regurgitation Mild - Rheumatic Origin": {    "1" : "http://az816091.vo.msecnd.net/courses/5016.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/5016-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/104A.mp3"  },  "Mitral Regurgitation and Aortic Regurgitation": {    "1" : "http://az816091.vo.msecnd.net/courses/105M.mp3"  },  "Acute Pericarditis": {    "1" : "http://az816091.vo.msecnd.net/courses/5024.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/5024-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/106E.mp3"  },  "Coarctation of the Aorta": {    "1" : "http://az816091.vo.msecnd.net/courses/5109.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/5109-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/107A.mp3"  },  "Patent Ductus Arteriosus": {    "1" : "http://az816091.vo.msecnd.net/courses/5021.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/5021-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/109P.mp3"  },  "Cardiomyopathy - Congestive Moderate": {    "1" : "http://az816091.vo.msecnd.net/courses/5102.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/5102-half.mp3"  },  "Atrial Septal Defect": {    "1" : "http://az816091.vo.msecnd.net/courses/5106.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/5106-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/110P.mp3"  },  "Ventricular Septal Defect": {    "1" : "http://az816091.vo.msecnd.net/courses/5101.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/5101-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/111T.mp3"  },  "Tetralogy of Fallot": {    "1" : "http://az816091.vo.msecnd.net/courses/112T.mp3"  },  "Arrhythmogenic RV Dysplasia": {    "1" : "http://az816091.vo.msecnd.net/courses/114T.mp3"  },  "Myocarditis": {    "1" : "http://az816091.vo.msecnd.net/courses/115M.mp3"  },  "Commotio Cordis": {    "1" : "http://az816091.vo.msecnd.net/courses/116M.mp3"  },  "Ebstein&#39;s Anomaly": {    "1" : "http://az816091.vo.msecnd.net/courses/5108.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/5108-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/117T.mp3"  },  "First and Second Heart Sounds - Reduced Intensity": {    "1" : "http://az816091.vo.msecnd.net/courses/118M.mp3"  },  "Second Heart Sound - Splitting": {    "1" : "http://az816091.vo.msecnd.net/courses/119P.mp3"  },  "Second Heart Sound - Fixed Splitting": {    "1" : "http://az816091.vo.msecnd.net/courses/5150.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/5150-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/120P.mp3"  },  "Mid-Systolic Click": {    "1" : "http://az816091.vo.msecnd.net/courses/5009.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/5009-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/121M.mp3"  },  "Mitral Regurgitation (Pan-systolic Murmur)": {    "1" : "http://az816091.vo.msecnd.net/courses/122M.mp3"  },  "Aortic Stenosis (Diamond Shaped Systolic Murmur)": {    "1" : "http://az816091.vo.msecnd.net/courses/5014.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/5014-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/123A.mp3"  },  "Aortic Regurgitation (Decrescendo Diastolic Murmur)": {    "1" : "http://az816091.vo.msecnd.net/courses/5015.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/5015-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/124E.mp3"  },  "Mitral Stenosis (Diastolic Murmur)": {    "1" : "http://az816091.vo.msecnd.net/courses/125M.mp3"  },  "Mitral Valve Leaflet Prolapse": {    "1" : "http://az816091.vo.msecnd.net/courses/5017.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/5017-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/127M.mp3"  },  "Innocent Systolic Ejection Murmur - Standing": {    "1" : "http://az816091.vo.msecnd.net/courses/5012.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/5012-half.mp3"  },  "Mediastinal Crunch": {    "1" : "http://az816091.vo.msecnd.net/courses/5025.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/5025-half.mp3"  },  "Mitral Valve Prolapse with Mid Systolic Click - Standing": {    "1" : "http://az816091.vo.msecnd.net/courses/5026.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/5026-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/131M.mp3"  },  "Prosthetic Heart Sound - Aortic": {    "1" : "http://az816091.vo.msecnd.net/courses/5022.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/5022-half.mp3"  },  "Prosthetic Heart Sound - Mitral": {    "1" : "http://az816091.vo.msecnd.net/courses/5023.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/5023-half.mp3"  },  "Pulmonary Stenosis": {    "1" : "http://az816091.vo.msecnd.net/courses/5105.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/5105-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/134P.mp3"  },  "Vesicular - Diminished": {    "1" : "http://az816091.vo.msecnd.net/courses/6108.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/6108-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/135Post3L.mp3"  },  "Bronchovesicular": {    "1" : "http://az816091.vo.msecnd.net/courses/6004.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/6004-half.mp3"  },  "Egophony - e": {    "1" : "http://az816091.vo.msecnd.net/courses/6007.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/6007-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/137Post3L.mp3"  },  "Whispered Pectoriloquy - Healthy": {    "1" : "http://az816091.vo.msecnd.net/courses/6009.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/6009-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/138Post3L.mp3"  },  "Bronchophony - Healthy": {    "1" : "http://az816091.vo.msecnd.net/courses/6011.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/6011-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/139Post3L.mp3"  },  "Stridor": {    "1" : "http://az816091.vo.msecnd.net/courses/6025.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/6025-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/140Post3L.mp3"  },  "Wheezes - High Pitched": {    "1" : "http://az816091.vo.msecnd.net/courses/6020.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/6020-half.mp3"  },  "Wheezes - Low Pitched": {    "1" : "http://az816091.vo.msecnd.net/courses/6021.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/6021-half.mp3"  },  "Wheezes - Expiratory": {    "1" : "http://az816091.vo.msecnd.net/courses/6022.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/6022-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/143Post3L.mp3"  },  "Wheezes - Polyphonic": {    "1" : "http://az816091.vo.msecnd.net/courses/6023.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/6023-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/144Post3L.mp3"  },  "Wheezes - Monophonic": {    "1" : "http://az816091.vo.msecnd.net/courses/6024.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/6024-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/145Post3L.mp3"  },  "Crackles - High Pitched (Rales)": {    "1" : "http://az816091.vo.msecnd.net/courses/6013.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/6013-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/146Post3L.mp3"  },  "Crackles - Low Pitched (Rales)": {    "1" : "http://az816091.vo.msecnd.net/courses/6014.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/6014-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/147Post3L.mp3"  },  "Crackles - Early Inspiratory (Rales)": {    "1" : "http://az816091.vo.msecnd.net/courses/6015.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/6015-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/148Post3L.mp3"  },  "Crackles - Late Inspiratory (Rales)": {    "1" : "http://az816091.vo.msecnd.net/courses/6016.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/6016-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/149Post3L.mp3"  },  "Egophony - a": {    "1" : "http://az816091.vo.msecnd.net/courses/6008.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/6008-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/150Post3L.mp3"  },  "Whispered Pectoriloquy - Abnormal": {    "1" : "http://az816091.vo.msecnd.net/courses/6010.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/6010-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/151Post3L.mp3"  },  "Bronchophony - Abnormal": {    "1" : "http://az816091.vo.msecnd.net/courses/6012.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/6012-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/152Post3L.mp3"  },  "Innocent Systolic Ejection Murmur - Supine": {    "1" : "http://az816091.vo.msecnd.net/courses/5011.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/5011-half.mp3"  },  "First and Second Heart Sounds - Normal and Unsplit": {    "1" : "http://az816091.vo.msecnd.net/courses/5001.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/5001-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/32M.mp3"  },  "Second Heart Sound - Physiologic Split": {    "1" : "http://az816091.vo.msecnd.net/courses/5002.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/5002-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/34P.mp3"  },  "Third Heart Sound - Physiologic": {    "1" : "http://az816091.vo.msecnd.net/courses/5003.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/5003-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/35M.mp3"  },  "Innocent Murmur": {    "1" : "http://az816091.vo.msecnd.net/courses/36P.mp3"  },  "Exercise - Heart Rate 120": {    "1" : "http://az816091.vo.msecnd.net/courses/37M.mp3"  },  "First Heart Sound - Loud": {    "1" : "http://az816091.vo.msecnd.net/courses/38M.mp3"  },  "First Heart Sound (Minimally Split)": {    "1" : "http://az816091.vo.msecnd.net/courses/5110.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/5110-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/39T.mp3"  },  "First Heart Sound (Markedly Split)": {    "1" : "http://az816091.vo.msecnd.net/courses/40T.mp3"  },  "First Heart Sound - Decreased Intensity": {    "1" : "http://az816091.vo.msecnd.net/courses/41M.mp3"  },  "Fourth Heart Sound": {    "1" : "http://az816091.vo.msecnd.net/courses/5006.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/5006-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/42M.mp3"  },  "First Heart Sound plus Aortic Ejection Click": {    "1" : "http://az816091.vo.msecnd.net/courses/5010.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/5010-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/43A.mp3"  },  "Second Heart Sound with Persistent Splitting": {    "1" : "http://az816091.vo.msecnd.net/courses/45P.mp3"  },  "Second Heart Sound with Fixed Splitting": {    "1" : "http://az816091.vo.msecnd.net/courses/5150.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/5150-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/46P.mp3"  },  "Second Heart Sound: Fixed Splitting, Increased Aortic Intensity": {    "1" : "http://az816091.vo.msecnd.net/courses/47A.mp3"  },  "Second Heart Sound: Fixed Splitting, Decreased Aortic Intensity": {    "1" : "http://az816091.vo.msecnd.net/courses/48P.mp3"  },  "Second Heart Sound and Late Systolic Click": {    "1" : "http://az816091.vo.msecnd.net/courses/5013.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/5013-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/49M.mp3"  },  "Aortic Regurgitation - Severe": {    "1" : "http://az816091.vo.msecnd.net/courses/4E.mp3"  },  "Second Heart Sound and a Tumor Plop": {    "1" : "http://az816091.vo.msecnd.net/courses/50M.mp3"  },  "Opening Snap and Second Heart Sound": {    "1" : "http://az816091.vo.msecnd.net/courses/5008.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/5008-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/52M.mp3"  },  "Aortic Regurgitation - Moderate": {    "1" : "http://az816091.vo.msecnd.net/courses/5E.mp3"  },  "Aortic Stenosis - Mod Regur. Mild": {    "1" : "http://az816091.vo.msecnd.net/courses/6A.mp3"  },  "Wheeze": {    "1" : "http://az816091.vo.msecnd.net/courses/6101.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/6101-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/71Post2L.mp3"  },  "Crackles - Fine (Rales)": {    "1" : "http://az816091.vo.msecnd.net/courses/6102.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/6102-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/72Ant3L.mp3"  },  "Crackles - Coarse (Rales)": {    "1" : "http://az816091.vo.msecnd.net/courses/6103.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/6103-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/73Ant3L.mp3"  },  "Vesicular - Normal": {    "1" : "http://az816091.vo.msecnd.net/courses/6001.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/6001-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/74Post4L.mp3"  },  "Rhonchi - Low Pitched Wheezes": {    "1" : "http://az816091.vo.msecnd.net/courses/6105.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/6105-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/75Post4L.mp3"  },  "Bronchial": {    "1" : "http://az816091.vo.msecnd.net/courses/6106.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/6106-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/76Ant1R.mp3"  },  "Pleural Rubs": {    "1" : "http://az816091.vo.msecnd.net/courses/6107.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/6107-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/77Ant3L.mp3"  },  "Aortic Stenosis - Severe": {    "1" : "http://az816091.vo.msecnd.net/courses/5104.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/5104-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/7A.mp3"  },  "Third Heart Sound Gallop - Abnormal": {    "1" : "http://az816091.vo.msecnd.net/courses/5005.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/5005-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/84M.mp3"  },  "Fourth Heart Sound Gallop": {    "1" : "http://az816091.vo.msecnd.net/courses/85M.mp3"  },  "Third and Fourth Heart Sound Gallop": {    "1" : "http://az816091.vo.msecnd.net/courses/5007.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/5007-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/86M.mp3"  },  "Summation Gallop at 120 beats per minute": {    "1" : "http://az816091.vo.msecnd.net/courses/5107.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/5107-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/87M.mp3"  },  " Aortic Sclerosis (Musical Murmur)": {    "1" : "http://az816091.vo.msecnd.net/courses/88A.mp3"  },  "Aortic Stenosis - Mild": {    "1" : "http://az816091.vo.msecnd.net/courses/89A.mp3"  },  "Mitral Regurgitation": {    "1" : "http://az816091.vo.msecnd.net/courses/91M.mp3"  },  "Mitral Valve Prolapse (Click with late systolic murmur)": {    "1" : "http://az816091.vo.msecnd.net/courses/92M.mp3"  },  "Hypertrophic Cardiomyopathy": {    "1" : "http://az816091.vo.msecnd.net/courses/93M.mp3"  },  "Aortic Regurgitation - Mild": {    "1" : "http://az816091.vo.msecnd.net/courses/94E.mp3"  },  "Pulmonic Regurgitation - Mild": {    "1" : "http://az816091.vo.msecnd.net/courses/95P.mp3"  },  "Mitral Stenosis - Mild": {    "1" : "http://az816091.vo.msecnd.net/courses/96M.mp3"  },  "Mitral Stenosis - Moderate": {    "1" : "http://az816091.vo.msecnd.net/courses/5018.mp3",    "2" : "http://az816091.vo.msecnd.net/courses/5018-half.mp3",    "3" : "http://az816091.vo.msecnd.net/courses/97M.mp3"  },  "Mitral Stenosis - Severe": {    "1" : "http://az816091.vo.msecnd.net/courses/98M.mp3"  },  "Tricuspid Stenosis - Moderate": {    "1" : "http://az816091.vo.msecnd.net/courses/99T.mp3"  }}');
 console.log(sounds);
 </script>
 </head>
 <body>
+<b>SCORE: <span id="score">0</span> outta <span id="total">0</span></b>
 
-<a href="/quiz.html">Go to quiz..................................................................................................................................................................</a>
 <script>
 
+Array.prototype.contains = function(obj) {
+    var i = this.length;
+    while (i--) {
+        if (this[i] === obj) {
+            return true;
+        }
+    }
+    return false;
+}
+
+String.prototype.hashCode = function(){
+    if (Array.prototype.reduce){
+        return this.split("").reduce(function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a},0);              
+    } 
+    var hash = 0;
+    if (this.length === 0) return hash;
+    for (var i = 0; i < this.length; i++) {
+        var character  = this.charCodeAt(i);
+        hash  = ((hash<<5)-hash)+character;
+        hash = hash & hash; // Convert to 32bit integer
+    }
+    return hash;
+}
+var score = 0;
+var questions = 0;
+var length = 0;
 for (var key in sounds) {
   if (sounds.hasOwnProperty(key)) {
-    document.write("<p>" + key + "</p>");
+    length++;
+    document.write("<p class='title' id=" + key.hashCode() + ">" + key + "</p>");
+  }
+}
+for (var key in sounds) {
+  if (sounds.hasOwnProperty(key)) {
     for (var sound in sounds[key]){
-     document.write(`<audio style="width:100%;height:70px;" controls>
+     var hash = key.hashCode();
+     document.write(`<audio id="${hash}" class="audio" style="display:block" controls>
   <source src="${sounds[key][sound]}" type="audio/mpeg">
 Your browser does not support the audio element.
-</audio><br/>`)
+</audio>`)
     }
   }
 }
+
+$(document).ready(function (){
+
+  newQuestion();
+});
+
+function newQuestion(){
+  reset();
+  var id = chooseRightAnswer();
+  showAudio(id);
+}
+
+function reset() {
+  $("#score").text(score);
+  $("#total").text(questions);
+  $(".title").each(function() {
+    $(this).hide();
+    $(this).unbind("click");
+    $(this).removeClass("right").removeClass("wrong").removeClass("red").removeClass("green");
+  }); 
+  $(".audio").each(function() {
+    $(this).hide();
+  }); 
+}
+
+function showAudio(id) {
+  $(".audio").each(function() {
+    if ($(this).attr("id") == id){
+      $(this).show();
+    }
+  }); 
+}
+
+function chooseRightAnswer() {
+  var winner = rand();
+  var loser = [rand(), rand(), rand(), rand(), rand()];
+  var winningId;
+  var index = 0;
+  $(".title").each(function() {
+    
+    if (index == winner) {
+      $(this).show().addClass("right");
+      winningId = $(this).attr("id");
+    }
+    if (loser.contains(index)) {
+      $(this).show().addClass("wrong");
+    }
+    index++;
+  }); 
+  
+  $(".right").click(function() {
+    score++;
+    questions++;
+
+    $(".right").addClass("green");
+    $(".wrong").addClass("red");
+    alert("Correct!! :) luvs ya smartie xoxox");
+    newQuestion();
+  })
+
+  $(".wrong").click(function() {
+    questions++;
+    $(".right").addClass("green");
+    $(".wrong").addClass("red");
+    alert("Wrong!! :) still luvs ya though dopie xoxox");
+    newQuestion();
+  })
+
+  return winningId;
+}
+
+
+function rand(){
+   var minimum = 0;
+   var maximum = length;
+
+  return Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
+}
+
 </script>
 </body>
 </html>
