@@ -11,7 +11,7 @@ for (var key in sounds) {
   if (sounds.hasOwnProperty(key)) {
     document.write("<p>" + key + "</p>");
     for (var sound in sounds[key]){
-     document.write(`<audio controls>
+     document.write(`<audio style="width:100%;height:70px;" controls>
   <source src="${sounds[key][sound]}" type="audio/mpeg">
 Your browser does not support the audio element.
 </audio><br/>`)
