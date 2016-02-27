@@ -3,6 +3,13 @@
 	<script src="https://code.jquery.com/jquery-1.11.3.js"></script>
 
 <style>
+body {
+  font-family: arial;
+  font-size: 18px;
+}
+p {
+  border: 1px solid #ccc;
+}
 .green {
   color:green;
 }
@@ -17,9 +24,12 @@ console.log(sounds);
 </script>
 </head>
 <body>
+<div>
 <a href="list.html">Go to list..................................................................................................................................................................</a>
+</div>
+<div>
 <b>SCORE: <span id="score">0</span> outta <span id="total">0</span></b>
-
+</div>
 <script>
 
 Array.prototype.contains = function(obj) {
@@ -72,9 +82,11 @@ $(document).ready(function (){
 });
 
 function newQuestion(){
-  reset();
-  var id = chooseRightAnswer();
-  showAudio(id);
+  setTimeout(function(){
+    reset();
+    var id = chooseRightAnswer();
+    showAudio(id);
+  }, 1200);
 }
 
 function reset() {
